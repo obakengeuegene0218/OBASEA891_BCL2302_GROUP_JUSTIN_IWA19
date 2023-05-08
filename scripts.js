@@ -100,7 +100,6 @@ for (const [genreId, genreName] of Object.entries(genres)) {
       document.querySelector('body').style.setProperty('--color-light', night.light)
       
         }
-saveButton.close()
   })
   //search button`
 
