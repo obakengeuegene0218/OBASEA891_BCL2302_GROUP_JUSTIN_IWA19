@@ -4,13 +4,13 @@ import { books,authors,genres } from "./data.js";
 
 
 // let page = 1;
-// let range = books.length
-//  if (!books || !Array.isArray(books)) {
-//    throw new Error('Source required');
-// }
-// if (!range || range.length < 2) {
-//   throw new Error('Range must be an array with two numbers');
-// }
+let range = books.length
+ if (!books || !Array.isArray(books)) {
+   throw new Error('Source required');
+}
+if (!range || range.length < 2) {
+  throw new Error('Range must be an array with two numbers');
+}
 
 // Define colors for day and night modes
 const day = {
@@ -100,13 +100,11 @@ for (const [genreId, genreName] of Object.entries(genres)) {
       document.querySelector('body').style.setProperty('--color-light', night.light)
       
         }
-  if(saveButton===dataSettingsTheme){
-    close()
-  }
+saveButton.close()
   })
   //search button`
 
-//Search button to close and open Search overlay
+  //search button to close and open Search overlay
   const searchbutton = document.querySelector("[data-header-search]");
   searchbutton.addEventListener('click', (event) => {
    document.querySelector("[data-search-overlay]").style.display = "block";
@@ -136,17 +134,14 @@ for (const [genreId, genreName] of Object.entries(genres)) {
   element2.innerText = 'All Genres';
   genresFragment.appendChild(element2);
   for (let [id, name] of Object.entries(genres)) {
-    const element2 = document.createElement('option');
+    const element = document.createElement('option');
     const value = id;
     const text = name;
-    element2.value = value;
-    element2.innerText = text;
-    genresFragment.appendChild(element2);
+    element.value = value;
+    element.innerText = text;
+    genresFragment.appendChild(element);
   }
   document.querySelector('[data-search-genres]').appendChild(genresFragment);
-
-  
-
 
 /// Show more button
 const showMoreButton = document.querySelector('[data-list-button]')
