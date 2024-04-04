@@ -96,14 +96,58 @@ saveButton.addEventListener('submit', (event) => {
 const searchButton = document.querySelector("[data-header-search]");
 const searchOverlay = document.querySelector("[data-search-overlay]");
 const searchCancel = document.querySelector("[data-search-cancel]");
+const searchInput = document.querySelector("[data-search-input]");
+const searchClear = document.querySelector("[data-search-clear]");
 
-searchButton.addEventListener('click', () => {
+// Function to show search overlay
+const showSearchOverlay = () => {
   searchOverlay.style.display = "block";
+  searchInput.focus(); // Automatically focus on the search input when the overlay is displayed
+};
+
+// Function to hide search overlay
+const hideSearchOverlay = () => {
+  searchOverlay.style.display = "none";
+  searchInput.value = ""; // Clear search input when hiding overlay
+};
+
+// Event listener to show search overlay when search button is clicked
+searchButton.addEventListener('click', () => {
+  showSearchOverlay();
 });
 
+// Event listener to hide search overlay when cancel button is clicked
 searchCancel.addEventListener('click', () => {
-  searchOverlay.style.display = "none";
+  hideSearchOverlay();
 });
+
+// Event listener to hide search overlay when clicking outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === searchOverlay) {
+    hideSearchOverlay();
+  }
+});
+
+// Event listener to close search overlay when escape key is pressed
+window.addEventListener('keydown', (event) => {
+  if (event.key === "Escape") {
+    hideSearchOverlay();
+  }
+});
+
+// Event listener to clear search input
+searchClear.addEventListener('click', () => {
+  searchInput.value = ""; // Clear search input
+  searchInput.focus(); // Focus on search input after clearing
+});
+
+// Simulated search functionality (Replace this with actual search implementation)
+searchInput.addEventListener('input', () => {
+  // This is a placeholder for actual search functionality
+  // You would replace this with your backend logic to search through content
+  console.log("Searching for:", searchInput.value);
+});
+
 
 
 
